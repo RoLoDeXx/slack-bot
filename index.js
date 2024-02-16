@@ -17,5 +17,5 @@ const app = new App({
     await say(`hola amigo! <@${message.user}>, kaise ho? theek ho?`);
   });
 
-  console.log("⚡️ Bolt app is running!");
+  console.log(`⚡️ Bolt app is running on ${process.env.PORT || 3000}`);
 })();

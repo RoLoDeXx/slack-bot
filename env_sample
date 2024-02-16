@@ -1,0 +1,2 @@
+SLACK_SIGNING_SECRET = secret_here;
+SLACK_BOT_TOKE = token_here;

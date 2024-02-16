@@ -12,9 +12,9 @@ const app = new App({
   // Start your app
   await app.start(process.env.PORT || 3000);
 
-  app.message("quote", async ({ message, say }) => {
+  app.message("hola amigo", async ({ message, say }) => {
     console.log(message);
-    await say(`hola amigo! <@${message.user}>, kaise ho? theek ho?`);
+    await say(`kaise ho? theek ho? <@${message.user}>`);
   });
 
   console.log(`⚡️ Bolt app is running on ${process.env.PORT || 3000}`);

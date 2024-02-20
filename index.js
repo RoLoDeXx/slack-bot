@@ -32,23 +32,34 @@ const helpTextFormat =
 
   // Listen for messages that match the specified format and respond in the same thread
   app.message(helpTextFormat, async ({ message, say }) => {
-    const generatedResponse = await axios.post(
-      "https://2713-2401-4900-1c5c-a8ce-7844-3937-7f15-3424.ngrok-free.app/api",
-      {
-        query: "what is the tech spec?",
+    const lines = message.text.split("\n");
+
+    // Find the line that contains 'Issue-Type'
+    const issueTypeLine = lines.find((line) => line.includes("Issue-Type"));
+    // Find the line that contains 'Description'
+    const descriptionLine = lines.find((line) => line.includes("Description"));
+
+    const issueType = issueTypeLine ? issueTypeLine.split(": ")[1] : "";
+    const description = descriptionLine ? descriptionLine.split(": ")[1] : "";
+
+    if (issueType.toLowerCase() === "query") {
+      try {
+        const generatedResponse = await axios.post(
+          "https://2713-2401-4900-1c5c-a8ce-7844-3937-7f15-3424.ngrok-free.app/api",
+          {
+            query: description,
+          }
+        );
+        await say({
+          text: `${generatedResponse.data} cc:<@${message.user}>!`,
+          thread_ts: message.ts,
+        });
+      } catch (error) {
+        console.error("Generateded response failed", error);
       }
-    );
-
-    // the content of message
-    // message.text;
-
-    console.log(generatedResponse);
-    console.log(message, "replying in thread of help query");
-    await say({
-      text: `${generatedResponse.data} cc:<@${message.user}>!`,
-      thread_ts: message.ts,
-    });
+    } else {
+      console.log("The Issue-Type is not Query.");
+    }
   });
-
   console.log(`⚡️ Bolt app is running on ${process.env.PORT || 3000}`);
 })();

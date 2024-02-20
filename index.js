@@ -51,7 +51,7 @@ const helpTextFormat =
           }
         );
         await say({
-          text: `${generatedResponse.data} cc:<@${message.user}>!`,
+          text: `${generatedResponse.data} \ncc:<@fe-ops>!`,
           thread_ts: message.ts,
         });
       } catch (error) {

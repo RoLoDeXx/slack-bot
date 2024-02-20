@@ -51,7 +51,7 @@ const helpTextFormat =
           }
         );
         await say({
-          text: `${generatedResponse.data} \ncc:<@fe-ops>!`,
+          text: `${generatedResponse.data} \ncc:<@S06KNMPR12N>`,
           thread_ts: message.ts,
         });
       } catch (error) {

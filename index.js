@@ -6,6 +6,7 @@ const app = new App({
 });
 
 // Regular expression for matching specific message format
+
 const helpTextFormat =
   /Component:\s*([^:\n]+)\s*\nIssue-Type:\s*([^:\n]+)\s*\nPriority:\s*([^:\n]+)\s*\nVersion:\s*([^:\n]+)\s*\nDescription:\s*([^:\n]+)\s*\nScreenshot\/Video:\s*([^:\n]+)/;
 

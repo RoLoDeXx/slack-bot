@@ -1,4 +1,5 @@
 const { App } = require("@slack/bolt");
+const axios = require("axios");
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -31,6 +32,15 @@ const helpTextFormat =
 
   // Listen for messages that match the specified format and respond in the same thread
   app.message(helpTextFormat, async ({ message, say }) => {
+    axios.post(
+      "https://2713-2401-4900-1c5c-a8ce-7844-3937-7f15-3424.ngrok-free.app/api",
+      {
+        query: "what is the tech spec?",
+      }
+    );
+    // the content of message
+    message.text;
+
     console.log(message, "replying in thread of help query");
     await say({
       text: `Hello <@${message.user}>!`,

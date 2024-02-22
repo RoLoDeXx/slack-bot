@@ -51,7 +51,7 @@ const helpTextFormat =
           }
         );
         await say({
-          text: `${generatedResponse.data} \ncc: <subteam^${feOpsGroupId}>`,
+          text: `${generatedResponse.data} \ncc: <@subteam^${feOpsGroupId}>`,
           thread_ts: message.ts,
         });
       } catch (error) {
